@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    
     <groupId>ca.on.eois.api</groupId>
     <artifactId>CaseManagementSpec</artifactId>
-    <version>1.0.0</version>
- <properties>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
         <swagger-annotations-version>1.5.22</swagger-annotations-version>
         <jersey-version>2.27</jersey-version>
         <jackson-version>2.8.9</jackson-version>
