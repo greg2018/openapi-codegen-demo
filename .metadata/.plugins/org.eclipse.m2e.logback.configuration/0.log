@@ -2643,3 +2643,11 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact ca.on.eois.ap
 2020-07-10 23:04:15,710 [Worker-92: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\UserAppsFive\openapi-codegen-demo\spring-boot-openapi\specification\target\generated-sources\openapi\.openapi-generator\VERSION
 2020-07-10 23:04:15,736 [Worker-92: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-07-10 23:04:15,737 [Worker-92: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-07-10 23:04:15,740 [Worker-92: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-07-10 23:04:15,741 [Worker-92: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\UserAppsFive\openapi-codegen-demo\spring-boot-openapi\specification\src\test\resources
+2020-07-10 23:04:16,465 [Worker-92: Building Workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/specification: io.reflectoring:specification:1.0-SNAPSHOT with classifier  to /specification/target/classes
+2020-07-10 23:04:16,506 [Worker-92: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-10 23:04:16,506 [Worker-92: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-07-10 23:04:16,507 [Worker-92: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-07-10 23:04:16,508 [Worker-92: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-10 23:04:16,509 [Worker-92: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\UserAppsFive\openapi-codegen-demo\spring-boot-openapi\app\src\test\resources
