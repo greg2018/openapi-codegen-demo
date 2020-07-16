@@ -1,0 +1,103 @@
+package ca.on.eois.api.cm.rest.controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.NativeWebRequest;
+
+import ca.on.eois.api.ApiUtil;
+import ca.on.eois.api.EoApi;
+import ca.on.eois.api.model.ClientSearchRequest;
+import ca.on.eois.api.model.EOAPIResponse;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
+
+import java.time.OffsetDateTime;
+import java.util.Optional;
+
+//import javax.validation.Valid;
+
+import javax.validation.Valid;
+
+@Controller
+public class MyClientApiController implements EoApi {
+
+
+	/*
+   
+	@Override
+	    public ResponseEntity<ClientSearchResultDetails> searchClient(@ApiParam(value = "The client first name") @Valid @RequestParam(value = "firstName", required = false) String firstName,@ApiParam(value = "The client first name") @Valid @RequestParam(value = "lastName", required = false) String lastName,@ApiParam(value = "The client date of birth") @Valid @RequestParam(value = "dateOfBirth", required = false) String dateOfBirth,@ApiParam(value = "The client date of birth") @Valid @RequestParam(value = "gender", required = false) String gender,@ApiParam(value = "The client date of birth") @Valid @RequestParam(value = "clientReferenceNumber", required = false) String clientReferenceNumber) {
+		ClientSearchResultDetails clientSearchResultDetails=new ClientSearchResultDetails();
+	    System.out.println("firstName="+firstName);   
+		
+		return ResponseEntity.ok(clientSearchResultDetails);
+
+	    }
+
+  */
+	
+	   @ApiOperation(value = "", nickname = "searchClient", notes = "", response = EOAPIResponse.class, authorizations = {
+		        @Authorization(value = "bearerAuth")
+		    }, tags={  })
+		    @ApiResponses(value = { 
+		        @ApiResponse(code = 400, message = "Bad request", response = EOAPIResponse.class),
+		        @ApiResponse(code = 401, message = "Unauthorized", response = EOAPIResponse.class),
+		        @ApiResponse(code = 403, message = "Forbidden", response = EOAPIResponse.class),
+		        @ApiResponse(code = 500, message = "Internal Server error", response = EOAPIResponse.class),
+		        @ApiResponse(code = 200, message = "OK", response = EOAPIResponse.class) })
+		    @RequestMapping(value = "/eo/clients/search",
+		        produces = { "application/json" }, 
+		        consumes = { "application/json" },
+		        method = RequestMethod.POST)
+	   @Override
+		   public ResponseEntity<EOAPIResponse> searchClient(
+				   @ApiParam(value = "" ,required=false) @RequestHeader(value="Ocp-Apim-Subscr", required=false) String ocpApimSubscr,
+		   		   @ApiParam(value = "" ,required=false) @RequestHeader(value="organizationId", required=false) String organizationId,
+		   		   @ApiParam(value = "" ,required=false) @RequestHeader(value="transactionDateTime", required=false) OffsetDateTime transactionDateTime,
+		   		   @ApiParam(value = "" ,required=false) @RequestHeader(value="transactionId", required=false) String transactionId,
+		   		   @ApiParam(value = "" ,required=true, allowableValues="EN, FR", defaultValue="EN") @RequestHeader(value="language", required=true) String language,
+		   		   @ApiParam(value = "search client payload" ,required=true )  @Valid @RequestBody ClientSearchRequest clientSearchRequest,
+		   		   @ApiParam(value = "" ) @RequestHeader(value="organizationSiteId", required=false) String organizationSiteId,
+		   		   @ApiParam(value = "" ) @RequestHeader(value="userId", required=false) String userId) {
+		        getRequest().ifPresent(request -> {
+		            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+		                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+		                    ApiUtil.setExampleResponse(request, "application/json", "{  \"commonResponse\" : {    \"resultInd\" : true,    \"message\" : \"message\"  },  \"clientSearchResultDetails\" : [ {    \"firstName\" : \"firstName\",    \"lastName\" : \"lastName\",    \"referenceNumber\" : \"referenceNumber\",    \"city\" : \"city\",    \"postalCode\" : \"postalCode\",    \"dateOfBirth\" : \"dateOfBirth\"  }, {    \"firstName\" : \"firstName\",    \"lastName\" : \"lastName\",    \"referenceNumber\" : \"referenceNumber\",    \"city\" : \"city\",    \"postalCode\" : \"postalCode\",    \"dateOfBirth\" : \"dateOfBirth\"  } ]}");
+		                    break;
+		                }
+		            }
+		        });
+		        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+		    }
+		
+
+	   @ApiOperation(value = "", nickname = "searchClient", notes = "", response = EOAPIResponse.class, authorizations = {
+		        @Authorization(value = "bearerAuth")
+		    }, tags={  })
+		    @ApiResponses(value = { 
+		        @ApiResponse(code = 400, message = "Bad request", response = EOAPIResponse.class),
+		        @ApiResponse(code = 401, message = "Unauthorized", response = EOAPIResponse.class),
+		        @ApiResponse(code = 403, message = "Forbidden", response = EOAPIResponse.class),
+		        @ApiResponse(code = 500, message = "Internal Server error", response = EOAPIResponse.class),
+		        @ApiResponse(code = 200, message = "OK", response = EOAPIResponse.class) })
+		    @RequestMapping(value = "/eo/clients/search1",
+		        produces = { "application/json" }, 
+		        consumes = { "application/json" },
+		        method = RequestMethod.POST)
+	  
+		   public ResponseEntity<EOAPIResponse> searchClient( @Valid @RequestBody ClientSearchRequest clientSearchRequest) {
+		   EOAPIResponse eoAPIResponse=new EOAPIResponse();
+		        return ResponseEntity.ok(eoAPIResponse);
+
+		    }
+
+}

@@ -1,0 +1,11 @@
+import org.joda.time.DateTime;
+
+public class JodaDatetimeDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		DateTime dt = new DateTime();;
+		System.out.println(dt);
+	}
+
+}

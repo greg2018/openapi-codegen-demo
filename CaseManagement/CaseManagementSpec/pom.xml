@@ -6,7 +6,7 @@
 
     <groupId>ca.on.eois.api</groupId>
     <artifactId>CaseManagementSpec</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <swagger-annotations-version>1.5.22</swagger-annotations-version>
@@ -70,16 +70,19 @@
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+ <!-- 
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-joda</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+   
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${jodatime-version}</version>
         </dependency>
+  -->
         <dependency>
             <groupId>com.brsanthu</groupId>
             <artifactId>migbase64</artifactId>
@@ -140,12 +143,36 @@
                             <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <configOptions>
+                            <!--
                                 <dateLibrary>joda</dateLibrary>
+                              -->  
+                                 <dateLibrary>java8</dateLibrary>
                             </configOptions>
                             <library>spring-boot</library>
                             <apiPackage>com.northlabs.demo.api</apiPackage>
                             <modelPackage>com.northlabs.demo.api.model</modelPackage>
                             <invokerPackage>com.northlabs.demo.api.handler</invokerPackage>
+                        </configuration>
+                    </execution>
+                    
+                     <execution>
+                        <id>spring-boot-api2</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/EO_SSM_API_v1.0.yaml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <configOptions>
+                            <!--
+                                <dateLibrary>joda</dateLibrary>
+                             -->   
+                                 <dateLibrary>java8</dateLibrary>
+                            </configOptions>
+                            <library>spring-boot</library>
+                            <apiPackage>ca.on.eois.api</apiPackage>
+                            <modelPackage>ca.on.eois.api.model</modelPackage>
+                            <invokerPackage>ca.on.eois.api.handler</invokerPackage>
                         </configuration>
                     </execution>
                 </executions>

@@ -1,0 +1,110 @@
+openapi: 3.0.1
+info:
+  title: EO API Definition
+  version: v1
+servers:
+  - url: 'http://10.200.22.64:8080/'
+    description: "EO API"
+paths:
+  '/eo/clients':
+    get:
+      operationId: searchClient
+      parameters:
+        - in: query
+          name: firstName
+          schema:
+           type: string 
+          description: The client first name
+        - in: query
+          name: lastName
+          schema:
+            type: string
+          description: The client last name 
+        - in: query
+          name: dateOfBirth
+          schema:
+            type: string
+          description: The client date of birth
+        - in: query
+          name: gender
+          schema:
+            type: string
+          description: The client gender  
+        - in: query
+          name: clientReferenceNumber
+          schema:
+            type: string
+          description: The client reference Number in Case Management     
+
+      responses:
+        '400':
+          description: Bad request
+          content:
+           application/json:
+              schema:
+                $ref: '#/components/schemas/EOAPIResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EOAPIResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EOAPIResponse'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EOAPIResponse'
+ ##     '404':
+ ##       description: "No Person records found for search parameters"
+        '200':
+          description: operation successfully
+          content:
+           application/json:
+              schema:
+                 $ref: '#/components/schemas/EOAPIResponse'
+      
+components:
+  schemas:
+    ClientSearchResult:
+      type: object
+      description: ""
+      properties:
+        firstName:
+          type: string
+          description: "First Name of the Client"
+        lastName:
+          type: string
+          description: "Last Name of the Client"          
+        dateOfBirth:
+          type: string
+          description: "Date of Birth of the Client"          
+        referenceNumber:
+          type: string
+          description: "Reference Number of Client in EO"
+        city:
+          type: string
+          description: "City of the Client's Primary Address"
+        postalCode:
+          type: string
+          description: "Postal Code of the Client's Primary Address"
+    EOAPIResponse:
+      type: object
+      properties:
+        resultInd:
+          type: boolean
+          description: "Indicates if the call was successful"
+        message:
+          type: string
+          description: "Informational message about the call status"
+        clientSearchResultDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientSearchResult'                         
+        
